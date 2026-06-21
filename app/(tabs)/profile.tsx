@@ -1,5 +1,10 @@
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
-
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
 export default function ProfileScreen() {
   const images = new Array(12).fill(null);
 
@@ -64,10 +69,10 @@ export default function ProfileScreen() {
       </View>
 
       {/* POSTS */}
+
       <View style={styles.grid}>
         {images.map((_, index) => (
           <Image
-            key={index}
             source={{
               uri: `https://picsum.photos/300/300?random=${index + 20}`,
             }}
