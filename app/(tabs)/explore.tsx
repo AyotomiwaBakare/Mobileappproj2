@@ -21,7 +21,9 @@ export default function SearchScreen() {
           {images.map((_, index) => (
             <Image
               key={index}
-              source={{ uri: `https://picsum.photos/300/300?random=${index + 20}` }}
+              source={{
+                uri: `https://picsum.photos/300/300?random=${index + 20}`,
+              }}
               style={styles.gridImage}
             />
           ))}

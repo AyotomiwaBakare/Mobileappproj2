@@ -1,17 +1,9 @@
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
   return (
     <ScrollView style={styles.container}>
-
       {/* Header */}
       <View style={styles.header}>
         <Ionicons name="add-circle-outline" size={28} color="white" />
@@ -50,11 +42,7 @@ export default function HomeScreen() {
           <Text style={styles.username}>unavalen_tinita</Text>
         </View>
 
-        <Ionicons
-          name="ellipsis-horizontal"
-          size={22}
-          color="white"
-        />
+        <Ionicons name="ellipsis-horizontal" size={22} color="white" />
       </View>
 
       {/* Post Image */}
@@ -77,18 +65,13 @@ export default function HomeScreen() {
       </View>
 
       {/* Likes */}
-      <Text style={styles.likes}>
-        Liked by 333mikki and others
-      </Text>
+      <Text style={styles.likes}>Liked by 333mikki and others</Text>
 
       {/* Caption */}
       <Text style={styles.caption}>
-        <Text style={{ fontWeight: "bold" }}>
-          unavalen_tinita
-        </Text>{" "}
-        Some flowers, some luck and cute vibes 🌸
+        <Text style={{ fontWeight: "bold" }}>unavalen_tinita</Text> Some
+        flowers, some luck and cute vibes 🌸
       </Text>
-
     </ScrollView>
   );
 }
