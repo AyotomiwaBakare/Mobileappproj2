@@ -1,37 +1,51 @@
 import {
+  Dimensions,
+  FlatList,
   Image,
   StyleSheet,
   TextInput,
-  View
+  View,
 } from "react-native";
 
-export default function SearchScreen() {
-  const images = Array.from({ length: 15 });
+const images = [
+  "https://picsum.photos/300?random=1",
+  "https://picsum.photos/300?random=2",
+  "https://picsum.photos/300?random=3",
+  "https://picsum.photos/300?random=4",
+  "https://picsum.photos/300?random=5",
+  "https://picsum.photos/300?random=6",
+  "https://picsum.photos/300?random=7",
+  "https://picsum.photos/300?random=8",
+  "https://picsum.photos/300?random=9",
+];
 
+const numColumns = 3;
+
+const size = Dimensions.get("window").width / numColumns;
+
+export default function Explore() {
   return (
     <View style={styles.container}>
-      <View style={styles.searchBar}>
-        <Ionicons name="search" size={20} color="#aaa" />
+      {/* Search Bar */}
+      <View style={styles.searchContainer}>
         <TextInput
-          placeholder="Search with Meta AI"
-          placeholderTextColor="#aaa"
-          style={styles.input}
+          placeholder="Search"
+          placeholderTextColor="#999"
+          style={styles.searchInput}
         />
       </View>
 
-      <ScrollView>
-        <View style={styles.grid}>
-          {images.map((_, index) => (
-            <Image
-              key={index}
-              source={{
-                uri: `https://picsum.photos/300/300?random=${index + 20}`,
-              }}
-              style={styles.gridImage}
-            />
-          ))}
-        </View>
-      </ScrollView>
+      {/* Image Grid */}
+
+      <FlatList
+        data={images}
+        numColumns={numColumns}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item }) => (
+          <Image source={{ uri: item }} style={{ width: size, height: size }} />
+        )}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 }
@@ -39,32 +53,23 @@ export default function SearchScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
-    paddingTop: 50,
+    backgroundColor: "#fff",
+    paddingTop: 40,
   },
-  searchBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#1c1c1c",
-    marginHorizontal: 12,
-    marginBottom: 10,
-    paddingHorizontal: 12,
-    borderRadius: 12,
-    height: 40,
+
+  searchContainer: {
+    paddingHorizontal: 15,
+
+    paddingVertical: 10,
   },
-  input: {
-    color: "white",
-    marginLeft: 8,
-    flex: 1,
-  },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  gridImage: {
-    width: "33.33%",
-    height: 135,
-    borderWidth: 1,
-    borderColor: "#000",
+
+  searchInput: {
+    backgroundColor: "#eee",
+
+    padding: 10,
+
+    borderRadius: 10,
+
+    fontSize: 16,
   },
 });
